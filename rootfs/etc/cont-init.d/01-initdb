@@ -1,0 +1,13 @@
+#!/usr/bin/with-contenv sh
+
+# create log directory
+if [ ! -d "$DB_LOG" ]; then
+  mkdir "$DB_LOG"
+  chown -R nobody:nobody "$DB_LOG"
+fi
+
+# create data directory and initialize db
+if [ ! -d "$PGDATA" ]; then
+  s6-setuidgid postgres mkdir -p "$PGDATA"
+  s6-setuidgid postgres initdb
+fi
