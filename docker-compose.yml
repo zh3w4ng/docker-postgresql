@@ -1,0 +1,10 @@
+version: '2'
+services:
+  postgresql:
+    image: zh3w4ng/postgresql
+    container_name: postgresql
+    environment:
+      - PGDATA=/var/lib/postgresql/data
+      - DB_LOG=/var/log/postgresql
+    volumes:
+      - /mnt/docker/postgresql:/var/lib/postgresql
